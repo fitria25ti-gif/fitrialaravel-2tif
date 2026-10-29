@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/', function () {
+    return view('welcome');
+});
